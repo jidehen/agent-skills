@@ -8,6 +8,8 @@ Create `skills/<kebab-case-name>/SKILL.md` with YAML `name` and `description` fi
 
 Keep instructions concise and link detailed references. Declare dependencies and distinguish demonstrated behavior from untested claims. Avoid assuming a particular agent vendor, proprietary service, or installed integration unless the skill actually requires it and documents that requirement.
 
+The public FAQ and scaling playbook in `docs/` are mirrored under `skills/rdf-agent-memory/references/` so an installed skill remains self-contained. Update both copies together when changing those explanations.
+
 ## Check RDF Agent Memory changes
 
 From `skills/rdf-agent-memory/`, after installing `.[dev]` in a virtual environment:

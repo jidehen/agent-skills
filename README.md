@@ -4,6 +4,8 @@ Practical, portable skills for agents doing real project work. Each skill combin
 
 The collection starts with **RDF Agent Memory**: durable project memory and document knowledge graphs whose accepted claims retain their evidence and review history. More skills can join the same layout as they become useful and tested.
 
+New to the idea? Read the [documentation overview](docs/README.md), then the [architecture FAQ](docs/architecture-faq.md) and [10,000-document scaling playbook](docs/scaling-playbook.md). They explain the rationale, comparisons, and limits before the setup instructions.
+
 ## Skill catalog
 
 | Skill | Use it for | Status |
@@ -44,7 +46,7 @@ You can also ask an agent to read the absolute path to `skills/rdf-agent-memory/
 
 > Which team owns Policy 42? Cite the accepted claim's source version and evidence line, and include any reviewed conflict.
 
-See the [usage guide](docs/rdf-agent-memory.md) for the full document workflow, [architecture FAQ](skills/rdf-agent-memory/references/architecture-faq.md) for design choices, and [scaling playbook](skills/rdf-agent-memory/references/scaling-playbook.md) for larger corpora.
+Start with the [documentation overview](docs/README.md) for the purpose and end-to-end approach. The [architecture FAQ](docs/architecture-faq.md) explains RDF/Turtle, vectorized OpenSearch, property graphs, provenance, and limitations; the [scaling playbook](docs/scaling-playbook.md) addresses the 10,000-long-document target. The [usage guide](docs/rdf-agent-memory.md) covers the working commands.
 
 ## Repository layout
 
@@ -58,7 +60,7 @@ skills/
     queries/          # Read-only SPARQL examples
     references/       # Architecture and workflow details
     tests/            # Functional regression checks
-docs/                 # Guides for people using the collection
+docs/                 # Public overview, FAQ, scaling plan, and usage guide
 ```
 
 Each skill is self-contained. Human-facing collection and installation information lives here; detailed skill guidance stays with its skill.

@@ -12,7 +12,7 @@ The project separates its own code from each user's project data. Clone or copy 
 - Different values for the same subject and predicate require an explicit compatibility or conflict disposition during promotion.
 - Canonical Turtle files can be reviewed, versioned, and queried with local SPARQL.
 
-The prototype does not infer facts merely because an ontology declares a relationship. Its query command runs local read-only `SELECT` queries over accepted Turtle files. See the [Architecture FAQ](../skills/rdf-agent-memory/references/architecture-faq.md) for RDF, Turtle, semantic knowledge graph, vector search, and property graph comparisons. See the [scaling playbook](../skills/rdf-agent-memory/references/scaling-playbook.md) for a measured plan for corpora such as 10,000 documents that are hundreds of pages each.
+The prototype does not infer facts merely because an ontology declares a relationship. Its query command runs local read-only `SELECT` queries over accepted Turtle files. See the [Architecture FAQ](architecture-faq.md) for RDF, Turtle, semantic knowledge graph, vector search, and property graph comparisons. See the [scaling playbook](scaling-playbook.md) for a measured plan for corpora such as 10,000 documents that are hundreds of pages each.
 
 ## Quick start
 
@@ -93,7 +93,7 @@ Promotion verifies that the quote appears on the specified `line:N`, records the
 
 ## Working at larger scale
 
-Ten thousand documents with hundreds of pages each represent roughly a million or more pages; the current prototype is not a one-command extraction or production-scale storage system. Use the [scaling playbook](../skills/rdf-agent-memory/references/scaling-playbook.md): define competency questions, evaluate a representative sample, inventory immutable source versions, create citable text renditions, shard work, review in a bounded queue, version the ontology, and measure throughput, quality, file count, memory, and query latency before expanding. The prototype's local query command reloads the accepted Turtle tree into memory for each process. If measured limits are exceeded, keep Turtle and provenance as the portable record and build a separately managed query index as a projection.
+Ten thousand documents with hundreds of pages each represent roughly a million or more pages; the current prototype is not a one-command extraction or production-scale storage system. Use the [scaling playbook](scaling-playbook.md): define competency questions, evaluate a representative sample, inventory immutable source versions, create citable text renditions, shard work, review in a bounded queue, version the ontology, and measure throughput, quality, file count, memory, and query latency before expanding. The prototype's local query command reloads the accepted Turtle tree into memory for each process. If measured limits are exceeded, keep Turtle and provenance as the portable record and build a separately managed query index as a projection.
 
 For distribution, share or clone the tool repository and create a fresh project directory for each corpus and memory space. The repository's MIT license covers this implementation. It uses general RDF, Turtle, SPARQL, provenance, and multi-agent workflow concepts; concepts and standards are not bundled as third-party code. Preserve the included license when redistributing this repository, and record separate licenses for any third-party code, vocabularies, or source documents you add.
 
