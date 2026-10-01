@@ -1,0 +1,70 @@
+@prefix mem: <urn:agent-memory:> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+mem:ontology a owl:Ontology ; mem:version "1.0.0" .
+
+mem:Claim a rdfs:Class ; rdfs:label "Evidence-grounded assertion" .
+mem:Evidence a rdfs:Class ; rdfs:label "Precise source evidence" .
+mem:Review a rdfs:Class ; rdfs:label "Verification decision" .
+mem:SourceDocument a rdfs:Class ; rdfs:label "Inventoried source file" .
+mem:TextRendition a rdfs:Class ; rdfs:label "Versioned UTF-8 extraction of a source" .
+mem:Entity a rdfs:Class ; rdfs:label "Domain entity" .
+mem:ExternalResource a rdfs:Class ; rdfs:label "Explicitly external IRI" .
+mem:Conflict a rdfs:Class ; rdfs:label "Reviewed difference between claims" .
+mem:CompatibilityReview a rdfs:Class ; rdfs:label "Reviewed compatible difference between claims" .
+mem:IdentityReview a rdfs:Class ; rdfs:label "Reviewed identity equivalence" .
+mem:MemoryIndex a rdfs:Class .
+mem:OperatingContract a rdfs:Class .
+mem:Preferences a rdfs:Class .
+mem:StandingRule a rdfs:Class ; rdfs:label "Recorded standing rule" .
+mem:SessionOutcome a rdfs:Class ; rdfs:label "Recorded session outcome" .
+mem:VerificationStatus a rdfs:Class .
+mem:ReviewDecision a rdfs:Class .
+mem:Verified a mem:VerificationStatus .
+mem:Accepted a mem:ReviewDecision .
+mem:version a rdf:Property ; rdfs:domain owl:Ontology ; rdfs:range rdfs:Literal .
+mem:ontologyVersion a rdf:Property ; rdfs:range rdfs:Literal .
+mem:subject a rdf:Property ; rdfs:domain mem:Claim .
+mem:predicate a rdf:Property ; rdfs:domain mem:Claim .
+mem:object a rdf:Property ; rdfs:domain mem:Claim .
+mem:evidence a rdf:Property ; rdfs:domain mem:Claim ; rdfs:range mem:Evidence .
+mem:textRendition a rdf:Property ; rdfs:domain mem:Evidence ; rdfs:range mem:TextRendition .
+mem:forSource a rdf:Property ; rdfs:domain mem:TextRendition ; rdfs:range mem:SourceDocument .
+mem:review a rdf:Property ; rdfs:domain mem:Claim ; rdfs:range mem:Review .
+mem:sourceDocument a rdf:Property ; rdfs:domain mem:Evidence ; rdfs:range mem:SourceDocument .
+mem:possibleMatch a rdf:Property ; rdfs:label "Possible identity match, pending review" .
+mem:storedAt a rdf:Property ; rdfs:label "Relative canonical Turtle file path" .
+mem:rule a rdf:Property ; rdfs:range rdfs:Literal .
+mem:relativePath a rdf:Property ; rdfs:range rdfs:Literal .
+mem:sha256 a rdf:Property ; rdfs:range rdfs:Literal .
+mem:byteSize a rdf:Property ; rdfs:domain mem:SourceDocument ; rdfs:range <http://www.w3.org/2001/XMLSchema#integer> .
+mem:mediaType a rdf:Property ; rdfs:domain mem:SourceDocument ; rdfs:range rdfs:Literal .
+mem:storageArea a rdf:Property ; rdfs:domain mem:TextRendition ; rdfs:range rdfs:Literal .
+mem:extractionMethod a rdf:Property ; rdfs:domain mem:TextRendition ; rdfs:range rdfs:Literal .
+mem:extractionVersion a rdf:Property ; rdfs:domain mem:TextRendition ; rdfs:range rdfs:Literal .
+mem:evidenceLocator a rdf:Property ; rdfs:domain mem:Evidence ; rdfs:range rdfs:Literal .
+mem:evidenceQuote a rdf:Property ; rdfs:domain mem:Evidence ; rdfs:range rdfs:Literal .
+mem:sourceSha256 a rdf:Property ; rdfs:domain mem:Evidence ; rdfs:range rdfs:Literal .
+mem:renditionSha256 a rdf:Property ; rdfs:domain mem:Evidence ; rdfs:range rdfs:Literal .
+mem:verificationStatus a rdf:Property ; rdfs:domain mem:Claim ; rdfs:range mem:VerificationStatus .
+mem:reviewedBy a rdf:Property ; rdfs:domain mem:Claim ; rdfs:range rdfs:Literal .
+mem:reviewer a rdf:Property ; rdfs:range rdfs:Literal .
+mem:reviewedAt a rdf:Property ; rdfs:range <http://www.w3.org/2001/XMLSchema#dateTime> .
+mem:decision a rdf:Property ; rdfs:domain mem:Review ; rdfs:range mem:ReviewDecision .
+mem:rationale a rdf:Property ; rdfs:range rdfs:Literal .
+mem:reviewedSourceSha256 a rdf:Property ; rdfs:domain mem:Review ; rdfs:range rdfs:Literal .
+mem:reviewedRenditionSha256 a rdf:Property ; rdfs:domain mem:Review ; rdfs:range rdfs:Literal .
+mem:claimA a rdf:Property ; rdfs:range mem:Claim .
+mem:claimB a rdf:Property ; rdfs:range mem:Claim .
+mem:classification a rdf:Property ; rdfs:domain mem:Conflict ; rdfs:range rdfs:Literal .
+mem:leftIdentity a rdf:Property ; rdfs:domain mem:IdentityReview .
+mem:rightIdentity a rdf:Property ; rdfs:domain mem:IdentityReview .
+mem:identityEvidence a rdf:Property ; rdfs:domain mem:IdentityReview ; rdfs:range mem:Evidence .
+mem:text a rdf:Property ; rdfs:range rdfs:Literal .
+mem:recordedBy a rdf:Property ; rdfs:range rdfs:Literal .
+mem:recordedAt a rdf:Property ; rdfs:range <http://www.w3.org/2001/XMLSchema#dateTime> .
+
+# Identity equivalence requires explicit proof. This ontology does not infer owl:sameAs.
+mem:identityRule mem:rule "Use mem:possibleMatch for ambiguity; use owl:sameAs only after identity review." .

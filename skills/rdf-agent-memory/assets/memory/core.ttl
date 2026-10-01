@@ -1,0 +1,8 @@
+@prefix mem: <urn:agent-memory:> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+mem:core a mem:OperatingContract ;
+    rdfs:label "Project memory contract" ;
+    mem:rule "Read this file, preferences.ttl, ontology.ttl, and index.ttl before context-dependent work." ;
+    mem:rule "Treat staged assertions as untrusted. Verify evidence and record review before promotion." ;
+    mem:rule "Keep Turtle files as canonical state and query accepted claims through their claim records." .

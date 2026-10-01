@@ -1,0 +1,7 @@
+@prefix mem: <urn:agent-memory:> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+mem:preferences a mem:Preferences ;
+    rdfs:label "Project preferences" ;
+    mem:rule "Report the source and evidence locator for factual answers." ;
+    mem:rule "Show unresolved conflicts and uncertainty." .

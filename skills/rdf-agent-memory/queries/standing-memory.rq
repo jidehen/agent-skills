@@ -1,0 +1,8 @@
+PREFIX mem: <urn:agent-memory:>
+
+SELECT ?record ?kind ?text ?recordedBy ?recordedAt
+WHERE {
+  VALUES ?kind { mem:StandingRule mem:SessionOutcome }
+  ?record a ?kind ; mem:text ?text ; mem:recordedBy ?recordedBy ; mem:recordedAt ?recordedAt .
+}
+ORDER BY ?recordedAt

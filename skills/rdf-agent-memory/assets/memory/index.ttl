@@ -1,0 +1,5 @@
+@prefix mem: <urn:agent-memory:> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+mem:catalog a mem:MemoryIndex ;
+    rdfs:seeAlso mem:core, mem:preferences, mem:ontology .

@@ -1,0 +1,17 @@
+PREFIX mem: <urn:agent-memory:>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+SELECT ?claim ?subject ?predicate ?object ?source ?sourcePath ?sourceSha ?rendition ?renditionSha ?locator ?quote ?reviewer
+WHERE {
+  ?claim a mem:Claim ;
+    mem:verificationStatus mem:Verified ;
+    mem:subject ?subject ; mem:predicate ?predicate ; mem:object ?object ;
+    prov:wasDerivedFrom ?source ; mem:evidence ?evidence ; mem:review ?review .
+  ?source mem:relativePath ?sourcePath ; mem:sha256 ?sourceSha .
+  ?evidence mem:textRendition ?rendition ;
+    mem:sourceSha256 ?sourceSha ; mem:renditionSha256 ?renditionSha ;
+    mem:evidenceLocator ?locator ; mem:evidenceQuote ?quote .
+  ?rendition mem:forSource ?source ; mem:sha256 ?renditionSha .
+  ?review mem:decision mem:Accepted ; mem:reviewer ?reviewer .
+}
+ORDER BY ?claim

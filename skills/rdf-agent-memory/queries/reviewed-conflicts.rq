@@ -1,0 +1,13 @@
+PREFIX mem: <urn:agent-memory:>
+
+SELECT ?conflict ?claimA ?objectA ?claimB ?objectB ?classification ?rationale
+WHERE {
+  ?conflict a mem:Conflict ;
+    mem:claimA ?claimA ; mem:claimB ?claimB ;
+    mem:classification ?classification ; mem:rationale ?rationale .
+  ?claimA mem:verificationStatus mem:Verified ; mem:object ?objectA ; mem:review ?reviewA .
+  ?claimB mem:verificationStatus mem:Verified ; mem:object ?objectB ; mem:review ?reviewB .
+  ?reviewA mem:decision mem:Accepted .
+  ?reviewB mem:decision mem:Accepted .
+}
+ORDER BY ?conflict
